@@ -11,7 +11,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function () {
 var buttonInnerHTML = this.innerHTML;
 
 makeSound(buttonInnerHTML); 
-
+buttonAnimation(buttonInnerHTML);
 });
 
 }
@@ -20,7 +20,8 @@ makeSound(buttonInnerHTML);
 
 document.addEventListener("keypress", function(event) {
    
-    makeSound(event.key);
+  makeSound(event.key);
+  buttonAnimation(event.key);
 
 });
 
@@ -72,3 +73,16 @@ function makeSound(key) {
                 default: console.log(buttonInnerHTML);
         }
 };
+
+function buttonAnimation(currentKey) {
+
+          var activeButton = document.querySelector("." + currentKey);
+
+          activeButton.classList.add("pressed");
+
+          setTimeout(function() {
+                activeButton.classList.remove("pressed");
+          }, 100);
+
+          }
+
